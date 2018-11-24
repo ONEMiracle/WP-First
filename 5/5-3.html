@@ -7,14 +7,17 @@
 	<script type="text/javascript">
 		
 		//5-1
-		var a,b=0,sum=0;
-		a = prompt("输入一个整数！")
-		for(b;b<=a;b++)
-		{
-			sum = sum+b;
+		var a = parseInt(prompt("请输入一个正整数"));
+		function add(a) {
+			if ( a>1 ) {
+                return a+add(a-1);
+			}
+			else {
+                return 1;
+			}
 		}
-		alert(sum);
-
+		alert(add(a));
+        
 	</script>
 </head>
 <body>
