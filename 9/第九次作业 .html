@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>试验</title>
+	<style type="text/css">
+	    *{
+	    	margin: 0 auto;
+	    	line-height: 30px;
+	    }
+		#test1{
+			height: 300px;
+			width: 300px;
+			position: relative;
+			float: left;
+		}
+		#test2{
+			height: 300px;
+			position: absolute;
+			left: 305px;
+		}
+	</style>
+
+</head>
+<body>
+    <img src="">
+    <div id="test1">
+    	
+    </div>
+    <div id="test2">
+
+    
+    </div>
+
+    <script type="text/javascript">
+    	var xhr;
+	    if(window.XMLHttpRequest){  
+            xhr = new XMLHttpRequest();  
+        }
+        else{  
+            xhr = new ActiveObject("Microsoft.XMLHttp");
+        } 
+		xhr.onreadystatechange = function(){
+			if (xhr.readyState == 4) {
+                if (xhr.status = 200) {
+                    var xhr1 = JSON.parse(xhr.responseText);
+                    // console.log(xhr1.name);
+                    var output = '';
+
+                    output +=
+                    '<img src="'+xhr1.img+'" width="300px" height="300px">';
+                    document.getElementById('test1').innerHTML = output;
+
+             	    var input = '';
+
+                    input +=
+             	    "<p>"+"姓名："+xhr1.name+"</p>"+
+			        "<p>"+"学号："+xhr1.number+"</p>"+
+			        "<p>"+"就读学校："+xhr1.university+"</p>"+
+			        "<p>"+"学院："+xhr1.college+"</p>"+
+                    "<p>"+"寝室号:"+xhr1.dorm+"</p>"+
+                    "<ul>"+
+                       "<li>"+xhr1.subject[0].sname+":"+xhr1.subject[0].grade+
+
+                       "<li>"+xhr1.subject[1].sname+":"+xhr1.subject[1].grade+
+
+                       "<li>"+xhr1.subject[2].sname+":"+xhr1.subject[2].grade+
+                  
+                    "</ul>"
+                    document.getElementById('test2').innerHTML = input;
+
+                }
+
+            }
+		};
+		xhr.open("GET","http://mock-api.com/4jzA4LKk.mock/request",true);
+		xhr.send(null);
+	</script> 	
+    
+
+</body>
+</html>
